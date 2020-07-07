@@ -9,7 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class CalculatorFacadeTodayTests {
+public class CalculatorFacade1Tests {
 
     @Autowired
     private CalculatorFacade calculatorFacade;

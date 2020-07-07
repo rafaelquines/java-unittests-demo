@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class CalculatorFacadeTomorrowTests {
+public class CalculatorFacade2Tests {
 
     @Mock
     private CalculatorService calculatorService;
@@ -20,11 +20,43 @@ public class CalculatorFacadeTomorrowTests {
     private CalculatorFacade calculatorFacade;
 
     @Test
-    public void sumTest() {
+    public void sumTest1() {
         // Arrange
         int a = 7;
         int b = 8;
         int expectedResult = 15;
+        Mockito.when(calculatorService.sum(a, b)).thenReturn(expectedResult);
+
+        // Act
+        Integer result = calculatorFacade.sum(a, b);
+
+        // Assert
+        Assertions.assertEquals(result, expectedResult);
+        Mockito.verify(calculatorService, Mockito.times(1)).sum(a, b);
+    }
+
+    @Test
+    public void sumTest2() {
+        // Arrange
+        int a = -8;
+        int b = 3;
+        int expectedResult = -5;
+        Mockito.when(calculatorService.sum(a, b)).thenReturn(expectedResult);
+
+        // Act
+        Integer result = calculatorFacade.sum(a, b);
+
+        // Assert
+        Assertions.assertEquals(result, expectedResult);
+        Mockito.verify(calculatorService, Mockito.times(1)).sum(a, b);
+    }
+
+    @Test
+    public void sumTest3() {
+        // Arrange
+        int a = -9;
+        int b = -5;
+        int expectedResult = -14;
         Mockito.when(calculatorService.sum(a, b)).thenReturn(expectedResult);
 
         // Act
@@ -81,8 +113,8 @@ public class CalculatorFacadeTomorrowTests {
     public void sumAndMultiplyTest() {
         int a = 2;
         int b = 4;
-        int c = 6;
         int sum = 6;
+        int c = 6;
         int expectedResult = 36;
 
         CalculatorFacade calcFacadeMock = Mockito.spy(calculatorFacade);
